@@ -1,0 +1,11 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<p class="leagueName">${leagueName}</p>
+<p>A Pass Code is required to join this league</p>
+#{form @Application.addCurrentUserToLeague(leagueName,password)}
+    <input type="hidden" id="leagueName" name="leagueName">
+    <label for="leaguePassword">League Pass Code</label>
+    <input type="password" id="leaguePassword" name="leaguePassword">
+    <input type="submit">
+#{/form}

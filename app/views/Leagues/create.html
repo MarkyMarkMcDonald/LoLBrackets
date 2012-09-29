@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+#{form @Application.processCreateLeague()}
+    <label for="name">League Name</label>
+    <input type="text" id="name" name="league.name" />
+    <br />
+    <label for="password">League Pass Code (Optional)</label>
+    <input type="password" id="password" name="league.leaguePassword" />
+    <input type="submit" />
+#{/form}

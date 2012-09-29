@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{form @Information.processCreateUser()}
+<label for="username">Username</label>
+<input type="text" id="username" name="user.username" />
+<label for="password">Password</label>
+<input type="password" id="password" name="user.password" />
+<label for="email">Email (optional)</label>
+<input type="text" id="email" name="user.email" />
+<input type="submit" />
+#{/form}

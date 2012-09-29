@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{set isDashboard: true /}
+<a href="@{Information.viewAllLeagues()}" xmlns="http://www.w3.org/1999/html">View all</a> leagues.</p>
+<p><a href="@{Application.createLeague()}">Create</a> a league</p>
+
+#{if user.leagues != null}
+    Leagues you belong to:
+    #{list items:user.leagues, as:'league'}
+        <li><a href="@{Information.viewLeague(league.name)}">${league.name}</a></li>
+    #{/list}
+#{/if}
+#{else }
+<p>You currently do not belong to any leagues.
+#{/else}
+
+    <br />
+
+#{if user.ownedLeagues != null}
+    Leagues you administrate:
+    <table>
+    #{list items:user.ownedLeagues, as:'ownedLeague'}
+        <tr>
+            <td>${ownedLeague}</td>
+            <td><a href="@{Application.manageLeagueString(ownedLeague.name)}">Manage</a></td>
+        </tr>
+    #{/list}
+    </table>
+#{/if}
+#{else}
+<p>You currently do not own any leagues. </p>
+<p><a href="@{Application.createLeague()}">create your own</a></p>
+#{/else}

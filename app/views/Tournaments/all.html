@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Tournaments' /}
+
+<table>
+    <tr>
+        <th>
+            Tournament Name
+        </th>
+        <th>
+            Admin Name
+        </th>
+        <th>
+            # Leagues Used In
+        </th>
+        <th>
+            &nbsp;
+        </th>
+
+    </tr>
+#{paginate.list items:tournaments, as:'tournament'}
+    <tr>
+        <td><a href="@{Information.viewTournament(tournament.name)}">${tournament}</a></td>
+        <td>${tournament.owner}</td>
+        <td>${tournament.numLeaguesUsedIn}</td>
+        <td><a href="@{Application.joinTournament(tournament.name)}">Add</a></td>
+    </tr>
+#{/paginate.list}
+#{paginate.controls /}
+</table>

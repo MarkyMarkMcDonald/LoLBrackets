@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<table>
+    <tr>
+        <th>
+            League Name
+        </th>
+        <th>
+            Owner Name
+        </th>
+        <th>
+            Members
+        </th>
+        <th>
+             &nbsp;
+        </th>
+
+    </tr>
+#{paginate.list items:leagues, as:'league'}
+        <tr>
+            <td><a href="@{Information.viewLeague(league.name)}">${league}</a></td>
+            <td>${league.owner}</td>
+            <td>
+                ${league.numberOfMembers}
+            </td>
+            <td><a href="@{Application.joinLeague(league.name)}">Join</a></td>
+        </tr>
+    #{/paginate.list}
+    #{paginate.controls /}
+</table>
