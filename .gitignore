@@ -1,0 +1,12 @@
+/LoLBrackets.iml
+/LoLBrackets.ipr
+/LoLBrackets.iws
+bin/
+data/
+db/
+dist/
+logs/
+test-result/
+lib/
+tmp/
+modules/
