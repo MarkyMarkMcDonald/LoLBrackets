@@ -5,8 +5,6 @@ import models.Tournament;
 import models.User;
 import play.data.validation.Valid;
 import play.data.validation.Validation;
-import play.modules.paginate.ModelPaginator;
-import play.modules.paginate.ValuePaginator;
 import play.mvc.Controller;
 import services.Ownership;
 
