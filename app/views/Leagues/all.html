@@ -17,7 +17,7 @@
         </th>
 
     </tr>
-#{paginate.list items:leagues, as:'league'}
+#{list items:leagues, as:'league'}
         <tr>
             <td><a href="@{Information.viewLeague(league.name)}">${league}</a></td>
             <td>${league.owner}</td>
@@ -26,6 +26,6 @@
             </td>
             <td><a href="@{Application.joinLeague(league.name)}">Join</a></td>
         </tr>
-    #{/paginate.list}
-    #{paginate.controls /}
+    #{/list}
+
 </table>

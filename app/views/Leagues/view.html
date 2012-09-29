@@ -34,7 +34,7 @@ Active Tournaments:
         #{/if}
 
     </tr>
-#{paginate.list items:league.members, as:'member'}
+#{list items:league.members, as:'member'}
 <tr>
 <td>${member.username}</td>
 <td>Score</td>
@@ -44,9 +44,9 @@ Active Tournaments:
     </td>
     #{/if}
 </tr>
-#{/paginate.list}
+#{/list}
 </table>
-#{paginate.controls /}
+
 <br />
 <p>Owner:</p>
 ${league.owner}

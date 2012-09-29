@@ -17,13 +17,13 @@
         </th>
 
     </tr>
-#{paginate.list items:tournaments, as:'tournament'}
+#{list items:tournaments, as:'tournament'}
     <tr>
         <td><a href="@{Information.viewTournament(tournament.name)}">${tournament}</a></td>
         <td>${tournament.owner}</td>
         <td>${tournament.numLeaguesUsedIn}</td>
         <td><a href="@{Application.joinTournament(tournament.name)}">Add</a></td>
     </tr>
-#{/paginate.list}
-#{paginate.controls /}
+#{/list}
+
 </table>
