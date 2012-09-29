@@ -8,7 +8,7 @@ import java.util.List;
 public class People extends Controller {
 
     public static void index() {
-        List<Person> people = Person.findAll();
+        List<Person> people = Person.find("ORDER BY lastName").fetch();
         render(people);
     }
     
