@@ -25,7 +25,7 @@ public class Application extends Controller {
     }
 
     public static void dashboard(){
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         render(user);
     }
 
@@ -34,7 +34,7 @@ public class Application extends Controller {
     }
 
     public static void processCreateLeague(@Valid League league){
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         league = new League(league);
         league.setOwner(user);
         league.save();
@@ -44,7 +44,7 @@ public class Application extends Controller {
     }
 
     public static void joinLeague(String leagueName,String password){
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         League league = League.find("byName",leagueName).first();
         if (league.getLeaguePassword() != null && !league.getLeaguePassword().isEmpty()){
             addCurrentUserToLeaguePass(leagueName,password);
@@ -56,7 +56,7 @@ public class Application extends Controller {
     }
 
     public static void addCurrentUserToLeague(String leagueName){
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         League league = League.find("byName",leagueName).first();
         // If the league exists and isn't already in the user's list, add it
         if (league != null && league.getLeaguePassword().isEmpty()) {
@@ -73,7 +73,7 @@ public class Application extends Controller {
     }
 
     public static void addCurrentUserToLeaguePass(String leagueName, String password){
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         League league = League.find("byName",leagueName).first();
         // If the league exists and isn't already in the user's list, add it
         if (league != null) {
@@ -93,12 +93,8 @@ public class Application extends Controller {
 
     }
 
-
-
-
-
     public static void removeUserFromLeague(String username, String leagueName){
-        User user = User.find("byUsername",username).first();
+        User user = User.findByUsername(username);
         League league = League.find("byName",leagueName).first();
         // Make sure user and league exists
         if (user != null && league != null) {
@@ -115,20 +111,23 @@ public class Application extends Controller {
     }
 
     public static void manageLeagueString(String leagueName){
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         League league = League.find("byName",leagueName).first();
         boolean isOwner = Ownership.isLeagueOwner(user, league);
         render("Leagues/view.html", league, isOwner);
     }
 
     public static void manageLeague(User user, League league){
-        user = User.find("byUsername",session.get("username")).first();
+        user = User.findByUsername(session.get("username"));
         league = League.find("byName",league.getName()).first();
         boolean isOwner = Ownership.isLeagueOwner(user, league);
         render("Leagues/view.html", league, isOwner);
     }
 
+    public static void createTournament(){
+        User user = User.findByUsername(session.get("username"));
 
+    }
 
 
 

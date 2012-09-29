@@ -24,6 +24,11 @@ public class Brackets extends Model {
     private Tournament usedBy;
 
     public void addBracket(Bracket bracket){
+        if (!brackets.containsKey(bracket.getName())){
+            brackets.put(bracket.getName(),bracket);
+        }
+    }
+    public void replaceBracket(Bracket bracket){
         brackets.put(bracket.getName(),bracket);
     }
 

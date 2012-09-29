@@ -31,3 +31,7 @@
 <p>You currently do not own any leagues. </p>
 <p><a href="@{Application.createLeague()}">create your own</a></p>
 #{/else}
+
+#{if user.mayMakeTournaments}
+    <p><a href="@{Application.createTournament}">Create a new tournament</a></p>
+#{/if}

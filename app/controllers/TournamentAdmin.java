@@ -1,10 +1,9 @@
 package controllers;
 
-import models.League;
-import models.Tournament;
-import models.User;
+import models.*;
 import play.mvc.Before;
 import play.mvc.Controller;
+import services.Ownership;
 
 import java.util.List;
 
@@ -17,6 +16,10 @@ public class TournamentAdmin extends Controller {
     public static void checkAuthenticated(){
         if(!session.contains("username")){
             Information.login();
+        }
+        User user = User.findByUsername(session.get("username"));
+        if (!user.getMayMakeTournaments()){
+            render("Application/dashboard.html", user);
         }
     }
     
@@ -35,7 +38,7 @@ public class TournamentAdmin extends Controller {
 
     public static void addTournament(String tournamentName){
         Tournament tournament = Tournament.find("byOwner",session.get("username")).first();
-        User user = User.find("byUsername",session.get("username")).first();
+        User user = User.findByUsername(session.get("username"));
         List<League> usersOwnedLeagues = user.getOwnedLeagues();
         // If the admin of the league only administrates one league, don't ask for league selection  
         if (usersOwnedLeagues.size() == 1){
@@ -46,4 +49,46 @@ public class TournamentAdmin extends Controller {
             render("Tournaments/signup.html");
         }
     }
+
+    public static void createRoundRobin(){
+        render("Brackets/robin.html");
+    }
+
+    public static void createElimBracket(){
+        render("Brackets/elim.html");
+    }
+
+    public static void addRoundRobinToTournament(String tournamentName, RobinBracket bracket){
+        User user = User.findByUsername(session.get("username"));
+        Tournament tournament = Tournament.findByName(tournamentName);
+        if (Ownership.isTournamentOwner(user,tournament)){
+            tournament.getBracketsTemplate().addBracket(bracket);
+        }
+    }
+
+    public static void addElimToTournament(String tournamentName,ElimBracket bracket){
+        User user = User.findByUsername(session.get("username"));
+        Tournament tournament = Tournament.findByName(tournamentName);
+        if (Ownership.isTournamentOwner(user,tournament)){
+            tournament.getBracketsTemplate().addBracket(bracket);
+        }
+
+    }
+
+    public static void updateResultsOfRoundRobin(String tournamentName, RobinBracket bracket){
+        User user = User.findByUsername(session.get("username"));
+        Tournament tournament = Tournament.findByName(tournamentName);
+        if (Ownership.isTournamentOwner(user,tournament)){
+            tournament.getResults().replaceBracket(bracket);
+        }
+    }
+
+    public static void updateResultsOfSingleElim(String tournamentName,ElimBracket bracket){
+        User user = User.findByUsername(session.get("username"));
+        Tournament tournament = Tournament.findByName(tournamentName);
+        if (Ownership.isTournamentOwner(user,tournament)){
+            tournament.getResults().replaceBracket(bracket);
+        }
+    }
+
 }

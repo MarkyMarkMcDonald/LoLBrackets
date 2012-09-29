@@ -49,6 +49,11 @@ public class Tournament extends Model {
     public void addLeague(League league){
         forLeagues.add(league);
     }
+
+    public static Tournament findByName(String name){
+        return Tournament.find("byName",name).first();
+    }
+
     //------- Accessors and Modifiers ------
     public User getOwner() {
         return owner;

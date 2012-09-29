@@ -2,6 +2,7 @@ package models;
 
 import play.data.validation.*;
 import play.db.jpa.Model;
+import play.mvc.Scope;
 
 import javax.persistence.*;
 import java.util.List;
@@ -46,6 +47,8 @@ public class User extends Model {
 
     private League favoriteLeague;
 
+    private Boolean mayMakeTournaments;
+
     public void joinLeague(League league){
         leagues.add(league);
         league.addUser(this);
@@ -65,7 +68,19 @@ public class User extends Model {
     public String toString(){
         return username;
     }
+
+    public static User findByUsername(String username){
+        return User.find("byUsername", username).first();
+    }
     //--------------------- Accessors and Modifiers ------------------
+
+    public Boolean getMayMakeTournaments() {
+        return mayMakeTournaments;
+    }
+
+    public void setMayMakeTournaments(Boolean mayMakeTournaments) {
+        this.mayMakeTournaments = mayMakeTournaments;
+    }
 
     public List<Prediction> getPredictionsMade() {
         return predictionsMade;
