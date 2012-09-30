@@ -51,11 +51,11 @@ public class TournamentAdmin extends Controller {
     }
 
     public static void createRoundRobin(){
-        render("Brackets/robin.html");
+        render("../views/Brackets/Robin/robin.html");
     }
 
     public static void createElimBracket(){
-        render("Brackets/elim.html");
+        render("../views/Brackets/Elim/elim.html");
     }
 
     public static void addRoundRobinToTournament(String tournamentName, RobinBracket bracket){
