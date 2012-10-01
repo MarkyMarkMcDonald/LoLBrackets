@@ -4,6 +4,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +14,7 @@ import javax.persistence.ManyToOne;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table
 public class Prediction extends Model {
 
     @ManyToOne

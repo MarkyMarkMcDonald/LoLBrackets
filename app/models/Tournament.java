@@ -12,8 +12,12 @@ import java.util.List;
  * Time: 3:48 PM
  * To change this template use File | Settings | File Templates.
  */
+
 @Entity
+@Table
+
 public class Tournament extends Model {
+
 
     @ManyToMany
     private List<League> forLeagues;

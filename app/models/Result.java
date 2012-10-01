@@ -3,6 +3,7 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table
 public class Result extends Model {
     private String teamA;
     private int scoreA;

@@ -2,10 +2,7 @@ package models;
 
 import play.db.jpa.Model;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -16,6 +13,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table
 abstract public class Bracket extends Model {
     protected String name;
 

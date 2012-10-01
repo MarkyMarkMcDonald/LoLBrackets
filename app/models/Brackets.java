@@ -5,6 +5,7 @@ import play.db.jpa.Model;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Map;
 
 /**
@@ -15,6 +16,7 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table
 public class Brackets extends Model {
 
     @ElementCollection

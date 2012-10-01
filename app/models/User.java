@@ -15,6 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table
 public class User extends Model {
 
 //    @Unique("That Username is Unavailable")

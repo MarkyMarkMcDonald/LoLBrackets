@@ -17,6 +17,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table
 public class League extends Model {
 
     @Unique
