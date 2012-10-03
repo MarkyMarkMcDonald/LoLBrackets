@@ -1,6 +1,8 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+<div class="row">
+    <div class="four columns">
 
 #{form @Application.processCreateLeague()}
     <label for="name">League Name</label>
@@ -10,3 +12,8 @@
     <input type="password" id="password" name="league.leaguePassword" />
     <input type="submit" />
 #{/form}
+
+
+
+    </div>
+</div>

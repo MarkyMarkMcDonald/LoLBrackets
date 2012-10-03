@@ -2,11 +2,13 @@
     padding-top: 20px;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: #ffffff;
     width: 940px;
     margin: auto;
     height: 100%;
     clear:both;
+
+    background-color: #fdf6e3;
+    color: #657b83;
 
     -webkit-border-top-left-radius: 25px;
     -webkit-border-top-right-radius: 25px;
@@ -18,10 +20,11 @@
 html {
     height: 100%;
 }
+
 body {
     padding-top: 20px;
-    background-color: #389dd8;
     height:100%;
+    background-color: #93A1A1;
 }
 
 table {
