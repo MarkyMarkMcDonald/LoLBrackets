@@ -1,61 +1,64 @@
 #{extends 'main.html' /}
 #{set title: 'View'/}
+
 <div class="row">
-    <div class="three columns centered">
-        <div class="row">
-        <h2>${league.name}</h2>
-        </div>
-        <div class="row">
-            Active Tournaments:
-        </div>
-        <div class="row">
-            #{list league.tournaments, as:'tournament'}
-                    <li>
-                        ${tournament}
-                    </li>
-            #{/list}
-        </div>
-
-        <div class="row">
-
-        #{if isOwner}
-        <br />
-        <a href="@{Information.viewAllTournaments()}">View</a> Tournaments to add to this League
-        <br />
-        *{#{form @Application.addTournamentToLeague(league.name)}}*
-                *{}*
-        *{<label for="name">Tournament Name</label><input id="name" name="name" type="text"><input type="submit">}*
-                   *{}*
-        *{#{/form}}*
-
-        #{/if}
-
-        </div>
-        <div class="row">
-
-            <table>
-            <tr>
-                <th>Member</th>
-                <th>Points</th>
-                #{if isOwner}
-                    <th>Remove</th>
-                #{/if}
-
-            </tr>
-        #{list items:league.members, as:'member'}
-        <tr>
-        <td>${member.username}</td>
-        <td>Score</td>
-            #{if isOwner}
-            <td>
-            <a href="@{Application.removeUserFromLeague(member.username,league.name)}">Remove</a>
-            </td>
-            #{/if}
-        </tr>
-        #{/list}
-        </table>
-        </div>
-
+    <div class="four columns centered">
+                <h2>${league.name}</h2>
 
     </div>
 </div>
+
+<div class="row">
+    <div class="six columns">
+
+        <div class="row">
+            Active Tournaments:
+        </div>
+
+        <div class="row">
+        #{list league.tournaments, as:'tournament'}
+            <li>
+            ${tournament}
+            </li>
+        #{/list}
+        </div>
+        <br />
+        <div class="row">
+            #{if isOwner}
+                <a href="@{Information.viewAllTournaments()}">Add</a> Tournaments to this League
+            #{/if}
+        </div>
+
+    </div>
+
+    <div class="six columns end">
+        <div class="row">
+            <table>
+                <tr>
+                    <td><a href="@{Application.joinLeague(league.name)}">Join</a></td>
+                    <td><a href="@{Application.removeUserFromLeague(session.get("username"),league.name)}">Leave</a></td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    #{if isOwner}
+                    <th>&nbsp;</th>
+                    #{/if}
+
+                </tr>
+                #{list items:league.members, as:'member'}
+                    <tr>
+                        <td>${member.username}</td>
+                        #{if isOwner}
+                            <td>
+                                <a href="@{Application.removeUserFromLeague(member.username,league.name)}">Remove</a>
+                            </td>
+                        #{/if}
+                    </tr>
+                #{/list}
+            </table>
+        </div>
+
+    </div>
+</div>
+
+

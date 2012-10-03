@@ -17,6 +17,18 @@
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
+ul li a {
+    color: #FF00FF;
+    text-decoration: none;
+}
+ul li a.hover{
+    color: #FF00FF;
+    text-decoration: none;
+}
+ul li a.focus{
+    color: #FF00FF;
+    text-decoration: none;
+}
 html {
     height: 100%;
 }

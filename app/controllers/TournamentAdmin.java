@@ -23,8 +23,12 @@ public class TournamentAdmin extends Controller {
         }
     }
 
-    public static void createTournament(Tournament tournament){
+    public static void createTournament(){
+        render("Tournaments/create.html");
+    }
 
+    public static void processCreateTournament(Tournament tournament){
+        render("Tournaments/view.html",tournament);
     }
 
     public static void addTournamentToLeague(String tournamentName, String leagueName){

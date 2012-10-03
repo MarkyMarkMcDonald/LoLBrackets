@@ -24,7 +24,8 @@ public class Information extends Controller{
             render("Application/dashboard.html",user);
         }
         boolean isIndex = true;
-        render(isIndex);
+        boolean isDashboard = true;
+        render(isIndex, isDashboard);
     }
 
     public static void login() {

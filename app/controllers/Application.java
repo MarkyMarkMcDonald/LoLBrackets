@@ -110,7 +110,7 @@ public class Application extends Controller {
         // Make sure user and league exists
         if (user != null && league != null) {
             // Make sure current user is owner of the league
-            if (session.get("username").equals(league.getOwner().getUsername())){
+            if (session.get("username").equals(league.getOwner().getUsername()) || username.equals(session.get("username"))){
                 user.leaveLeague(league);
                 user.save();
                 league.save();
@@ -135,10 +135,7 @@ public class Application extends Controller {
         render("Leagues/view.html", league, isOwner);
     }
 
-    public static void createTournament(){
-        User user = User.findByUsername(session.get("username"));
 
-    }
 
 
 
