@@ -15,7 +15,6 @@ import java.util.List;
 
 @Entity
 @Table
-
 public class Tournament extends Model {
 
 

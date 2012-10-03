@@ -27,8 +27,20 @@ public class TournamentAdmin extends Controller {
         render("Tournaments/create.html");
     }
 
-    public static void processCreateTournament(Tournament tournament){
-        render("Tournaments/view.html",tournament);
+    public static void processCreateTournament(String tournamentName, int numElimBrackets, int numRobinBrackets, String wallOfInfoText){
+        Tournament tournament = new Tournament();
+        tournament.setName(tournamentName);
+        Brackets brackets = new Brackets();
+        for (int j = 0; j < numElimBrackets;j++){
+            brackets.addBracket(new ElimBracket());
+        }
+        for (int i = 0; i < numElimBrackets;i++){
+            brackets.addBracket(new RobinBracket());
+        }
+        tournament.setBracketsTemplate(brackets);
+        tournament.setResults(brackets);
+        tournament.save();
+        render("Tournaments/view.html", tournament);
     }
 
     public static void addTournamentToLeague(String tournamentName, String leagueName){
