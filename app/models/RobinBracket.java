@@ -14,7 +14,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table
 public class RobinBracket extends Bracket{
 
     @ManyToMany

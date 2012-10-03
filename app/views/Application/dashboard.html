@@ -8,35 +8,43 @@
         <h1>Leagues</h1>
 
         <div class="row">
-            <div class="two columns">
+            <div class="five columns">
                 <a href="@{Information.viewAllLeagues()}">View all </a>
             </div>
-            <div class="two columns end">
+            <div class="six columns end">
                 <a href="@{Application.createLeague()}">Create</a>
             </div>
         </div>
 
         <div class="row">
+            <ul>
             #{list items:user.leagues, as:'league'}
                 <li>
                     <a href="@{Information.viewLeague(league.name)}">${league.name}</a>
                 </li>
 
-                #{/list}
+            #{/list}
+            </ul>
         </div>
     </div>
 
-    <div class="six columns end">
+    <div class="four columns ">
         <h1>Tournaments</h1>
         <div class="row">
-            <div class="two columns">
-                <a href="@{Information.viewAllTournaments()}">View all </a>
-            </div>
-            <div class="two columns end">
+            <div class="twelve columns">
                 #{if user.mayMakeTournaments}
                     <a href="@{Application.createTournament}">Create</a>
                 #{/if}
             </div>
+        </div>
+        <div class="row">
+            <ul>
+                #{list items:tournaments, as:'tournament'}
+                <li>
+                    <a href="@{Information.viewTournament(tournaments.name)}">${tournament.name}</a>
+                </li>
+                #{/list}
+            </ul>
         </div>
     </div>
 </div>

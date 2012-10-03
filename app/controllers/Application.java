@@ -1,11 +1,14 @@
 package controllers;
 
 import models.League;
+import models.Tournament;
 import models.User;
 import play.data.validation.Valid;
 import play.mvc.Before;
 import play.mvc.Controller;
 import services.Ownership;
+
+import java.util.List;
 
 /**
  * Deals with requests that require basic user authentication
@@ -26,7 +29,9 @@ public class Application extends Controller {
 
     public static void dashboard(){
         User user = User.findByUsername(session.get("username"));
-        render(user);
+        List<Tournament> tournaments = Tournament.findAll();
+        boolean isDashboard = true;
+        render(user, isDashboard, tournaments);
     }
 
     public static void createLeague(){
