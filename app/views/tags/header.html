@@ -11,9 +11,9 @@
             Hello, ${session.get("username")}. <a href="@{Application.logout()}">Logout</a>
         #{/if}
 
-        #{else }
+        #{elseif !_isIndex}
             <a href="@{Information.login()}">Login</a>
-        #{/else}
+        #{/elseif}
     </div>
 
 </div>

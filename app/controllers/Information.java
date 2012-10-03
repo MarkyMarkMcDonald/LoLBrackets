@@ -23,7 +23,8 @@ public class Information extends Controller{
             User user = User.find("byUsername",session.get("username")).first();
             render("Application/dashboard.html",user);
         }
-        render();
+        boolean isIndex = true;
+        render(isIndex);
     }
 
     public static void login() {
