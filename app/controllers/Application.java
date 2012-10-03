@@ -39,6 +39,12 @@ public class Application extends Controller {
     }
 
     public static void processCreateLeague(@Valid League league){
+        if(validation.hasErrors()) {
+            params.flash(); // add http parameters to the flash scope
+            validation.keep(); // keep the errors for the next request
+            createLeague();
+        }
+
         User user = User.findByUsername(session.get("username"));
         league = new League(league);
         league.setOwner(user);

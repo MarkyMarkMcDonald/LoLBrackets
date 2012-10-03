@@ -28,18 +28,29 @@ public class Information extends Controller{
     }
 
     public static void login() {
-        render();
+        boolean isIndex = true;
+        render(isIndex);
     }
 
     public static void processLogin(String username, String password){
         User user = User.find("byUserName",username).first();
-        if (user != null && user.getPassword().equals(password)) {
-            session.put("username",user.getUsername());
-            render("Application/dashboard.html",user);
+
+        if(user == null){
+            Validation.addError("username", "User not found");
+        }
+
+        else if (!user.getPassword().equals(password)) {
+            Validation.addError("username", "Invalid Username and Password Combination");
+        }
+
+        if(validation.hasErrors()) {
+            params.flash(); // add http parameters to the flash scope
+            validation.keep(); // keep the errors for the next request
+            login();
         }
         else {
-            Validation.addError("username", "Your username and password combination were not found, please try again");
-            Information.index();
+            session.put("username",user.getUsername());
+            render("Application/dashboard.html",user);
         }
 
     }
@@ -63,7 +74,6 @@ public class Information extends Controller{
             validation.keep(); // keep the errors for the next request
             createUser();
         }
-
         User newUser = new User(user);
         newUser.save();
         session.put("username",newUser.getUsername());

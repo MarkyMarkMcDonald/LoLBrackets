@@ -5,12 +5,18 @@
     <div class="five columns centered">
 
     #{form @Information.processCreateUser()}
+        <span class="error">#{error 'user.username' /}</span>
         <label for="username">Username</label>
-        <input type="text" id="username" name="user.username" />
+        <input type="text" id="username" name="user.username" value="${flash.user.username}"/>
+
+        <span class="error">#{error 'user.password' /}</span>
         <label for="password">Password</label>
         <input type="password" id="password" name="user.password" />
-        <label for="email">Email (Only to be used for password recovery)</label>
-        <input type="text" id="email" name="user.email" />
+
+        <span class="error">#{error 'user.email' /}</span>
+        <label for="email">Email (only to be used for password recovery)</label>
+        <input type="text" id="email" name="user.email" value="${flash.user.email}"/>
+
         <input type="submit" />
     #{/form}
 

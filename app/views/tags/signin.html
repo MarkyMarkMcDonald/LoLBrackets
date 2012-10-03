@@ -7,10 +7,14 @@
 
     <div class="three columns offset-by-eight">
         #{form @Information.processlogin(),class:"form-vertical"}
+            <span class="error">#{error 'username' /}</span>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
+            <input type="text" id="username" name="username" value="${flash.username}"/>
+
+            <span class="error">#{error 'password' /}</span>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" />
+
             <input class="btn btn-primary" type="submit" value="Sign In">
         #{/form}
 
