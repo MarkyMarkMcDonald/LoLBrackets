@@ -1,37 +1,42 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 #{set isDashboard: true /}
-<a href="@{Information.viewAllLeagues()}" xmlns="http://www.w3.org/1999/html">View all</a> leagues.</p>
-<p><a href="@{Application.createLeague()}">Create</a> a league</p>
 
-#{if user.leagues != null}
-    Leagues you belong to:
-    #{list items:user.leagues, as:'league'}
-        <li><a href="@{Information.viewLeague(league.name)}">${league.name}</a></li>
-    #{/list}
-#{/if}
-#{else }
-<p>You currently do not belong to any leagues.
-#{/else}
 
-    <br />
+<div class="row">
+    <div class="six columns">
+        <h1>Leagues</h1>
 
-#{if user.ownedLeagues != null}
-    Leagues you administrate:
-    <table>
-    #{list items:user.ownedLeagues, as:'ownedLeague'}
-        <tr>
-            <td>${ownedLeague}</td>
-            <td><a href="@{Application.manageLeagueString(ownedLeague.name)}">Manage</a></td>
-        </tr>
-    #{/list}
-    </table>
-#{/if}
-#{else}
-<p>You currently do not own any leagues. </p>
-<p><a href="@{Application.createLeague()}">create your own</a></p>
-#{/else}
+        <div class="row">
+            <div class="two columns">
+                <a href="@{Information.viewAllLeagues()}">View all </a>
+            </div>
+            <div class="two columns end">
+                <a href="@{Application.createLeague()}">Create</a>
+            </div>
+        </div>
 
-#{if user.mayMakeTournaments}
-    <p><a href="@{Application.createTournament}">Create<a/> a new tournament</p>
-#{/if}
+        <div class="row">
+            #{list items:user.leagues, as:'league'}
+                <li>
+                    <a href="@{Information.viewLeague(league.name)}">${league.name}</a>
+                </li>
+
+                #{/list}
+        </div>
+    </div>
+
+    <div class="six columns end">
+        <h1>Tournaments</h1>
+        <div class="row">
+            <div class="two columns">
+                <a href="@{Information.viewAllTournaments()}">View all </a>
+            </div>
+            <div class="two columns end">
+                #{if user.mayMakeTournaments}
+                    <a href="@{Application.createTournament}">Create</a>
+                #{/if}
+            </div>
+        </div>
+    </div>
+</div>

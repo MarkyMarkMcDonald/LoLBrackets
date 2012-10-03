@@ -34,6 +34,7 @@ public class Tournament extends Model {
     @ManyToOne
     private User owner;
 
+
     public String toString(){
         return name;
     }

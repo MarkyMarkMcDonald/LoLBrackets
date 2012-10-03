@@ -1,9 +1,13 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
+<body>
 
-<p>welcome!</p>
-<p><a href="@{Information.viewAllLeagues()}">View All Leagues</a></p>
-<p><a href="@{Information.createUser()}">Create Account</a></p>
+<!-- Included JS Files (Compressed) -->
+<script src="/public/javascripts/foundation.min.js"></script>
+
+<!-- Initialize JS Plugins -->
+<script src="javascripts/app.js"></script>
+</body>
 
 
 #{signin /}

@@ -1,12 +1,20 @@
 #{extends 'main.html' /}
 #{set title:'Sign Up' /}
 
-#{form @Information.processCreateUser()}
-<label for="username">Username</label>
-<input type="text" id="username" name="user.username" />
-<label for="password">Password</label>
-<input type="password" id="password" name="user.password" />
-<label for="email">Email (optional)</label>
-<input type="text" id="email" name="user.email" />
-<input type="submit" />
-#{/form}
+<div class="row">
+    <div class="five columns centered">
+
+    #{form @Information.processCreateUser()}
+        <label for="username">Username</label>
+        <input type="text" id="username" name="user.username" />
+        <label for="password">Password</label>
+        <input type="password" id="password" name="user.password" />
+        <label for="email">Email (Only to be used for password recovery)</label>
+        <input type="text" id="email" name="user.email" />
+        <input type="submit" />
+    #{/form}
+
+    </div>
+</div>
+
+

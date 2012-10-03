@@ -22,7 +22,11 @@ public class TournamentAdmin extends Controller {
             render("Application/dashboard.html", user);
         }
     }
-    
+
+    public static void createTournament(Tournament tournament){
+
+    }
+
     public static void addTournamentToLeague(String tournamentName, String leagueName){
         Tournament tournament = Tournament.find("byName",tournamentName).first();
         League league = League.find("byName",leagueName).first();
