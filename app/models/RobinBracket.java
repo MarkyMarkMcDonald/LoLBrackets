@@ -37,6 +37,11 @@ public class RobinBracket extends Bracket{
 
         return results;
     }
+
+    public RobinBracket(String name){
+        this.name = name;
+    }
+
     //------ Accessors and Modifiers ------
     public List<Group> getGroups() {
         return groups;

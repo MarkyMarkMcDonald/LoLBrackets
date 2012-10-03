@@ -60,6 +60,8 @@ public class User extends Model {
         league.removeUser(this);
     }
 
+
+
     public User(User user){
         this.password = user.password;
         this.email = user.email;

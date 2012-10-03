@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="four columns">
-        #{form @TournamentAdmin.createTournament()}
+        #{form @TournamentAdmin.processCreateTournament()}
             <label for="tournamentName">Tournament Name:</label>
             <input name="tournamentName" id="tournamentName" type="text">
 
@@ -14,9 +14,6 @@
 
             <label for="numRobinBrackets">Number of Round Robin Brackets</label>
             <input name="numRobinBrackets" id="numRobinBrackets" type="text">
-
-            <label for="wallOfInfoText">Wall of Information Text:</label>
-            <textarea name="wallOfInfoText" id="wallOfInfoText">A Brief Description of the Tournament</textarea>
 
             <input type="submit">
         #{/form}

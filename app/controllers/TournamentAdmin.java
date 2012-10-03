@@ -5,7 +5,9 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import services.Ownership;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Deals with changes to Tournaments that require authentication by the admin of the Tournaments
@@ -27,15 +29,20 @@ public class TournamentAdmin extends Controller {
         render("Tournaments/create.html");
     }
 
-    public static void processCreateTournament(String tournamentName, int numElimBrackets, int numRobinBrackets, String wallOfInfoText){
+    public static void processCreateTournament(String tournamentName, int numElimBrackets, int numRobinBrackets){
+        User user = User.findByUsername(session.get("username"));
         Tournament tournament = new Tournament();
+        tournament.setOwner(user);
         tournament.setName(tournamentName);
         Brackets brackets = new Brackets();
-        for (int j = 0; j < numElimBrackets;j++){
-            brackets.addBracket(new ElimBracket());
+        brackets.setBrackets(new HashMap<String,Bracket>());
+        int j = 0;
+        for (; j < numElimBrackets;j++){
+            brackets.addBracket(new ElimBracket(Integer.toString(j)));
         }
-        for (int i = 0; i < numElimBrackets;i++){
-            brackets.addBracket(new RobinBracket());
+        int i = 0;
+        for (; i < numElimBrackets;i++){
+            brackets.addBracket(new RobinBracket(Integer.toString(j + i)));
         }
         tournament.setBracketsTemplate(brackets);
         tournament.setResults(brackets);

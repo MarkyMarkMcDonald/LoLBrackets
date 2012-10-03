@@ -83,7 +83,11 @@ public class Information extends Controller{
 
     public static void viewLeague(String leagueName){
         League league = League.find("byName",leagueName).first();
-        render("Leagues/view.html",league);
+        boolean isOwner = false;
+        if (league.getOwner().getUsername().equals(session.get("username"))) {
+            isOwner = true;
+        }
+        render("Leagues/view.html",league, isOwner);
     }
 
     public static void viewTournament(String tournamentName){

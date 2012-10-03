@@ -1,4 +1,37 @@
 #{extends 'main.html' /}
 #{set title:'Tournaments' /}
 
-<p></p>
+<div class="row">
+    <div class="four columns">
+        <div class="row">
+            <h1>${tournament.name}</h1>
+        </div>
+
+        <div class="row">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<dl class="tabs">
+    #{list items:tournament.results.brackets, as:'bracket'}
+        <dd #{if bracket_first}class="active"#{/if}><a href="#simple${bracket_index}">${bracket_index}</a></dd>
+    #{/list}
+</dl>
+
+<ul class="tabs-content">
+    #{list items:tournament.results.brackets, as:'bracket'}
+        <li #{if bracket_first}class="active"#{/if} id="simple${tournament_index}Tab">#{include 'Brackets/Elim/view.html' /}</li>
+    #{/list}
+</ul>
+
+
+#{set 'moreScripts'}
+    <script type="text/javascript" src="/public/javascripts/jquery.foundation.tabs.js"></script>
+    <script type="text/javascript">
+        $(document).foundationTabs();
+    </script>
+#{/set}

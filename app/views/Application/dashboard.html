@@ -41,7 +41,7 @@
             <ul>
                 #{list items:tournaments, as:'tournament'}
                 <li>
-                    <a href="@{Information.viewTournament(tournaments.name)}">${tournament.name}</a>
+                    <a href="@{Information.viewTournament(tournament.name)}">${tournament.name}</a>
                 </li>
                 #{/list}
             </ul>

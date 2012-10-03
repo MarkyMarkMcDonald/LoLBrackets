@@ -30,7 +30,9 @@ public class ElimBracket extends Bracket {
         return score;
     }
 
-
+    public ElimBracket(String name){
+        this.name = name;
+    }
 
     //----- Accessors and Modifiers
 
