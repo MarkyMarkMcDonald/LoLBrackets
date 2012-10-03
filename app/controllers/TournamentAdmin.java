@@ -59,7 +59,8 @@ public class TournamentAdmin extends Controller {
             league.save();
             tournament.save();
         }
-        render("Leagues/view.html",league);
+        Information.viewLeague(league.getName());
+
 
     }
 

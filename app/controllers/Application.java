@@ -50,8 +50,8 @@ public class Application extends Controller {
         league.setOwner(user);
         league.save();
         user.save();
-        boolean isOwner = true;
-        render("Leagues/view.html", league, isOwner);
+        Information.viewLeague(league.getName());
+
     }
 
     public static void joinLeague(String leagueName,String password){
@@ -79,8 +79,8 @@ public class Application extends Controller {
                 }
             }
         }
-        boolean isOwner = Ownership.isLeagueOwner(user, league);
-        render("Leagues/view.html", league, isOwner);
+        Information.viewLeague(leagueName);
+
     }
 
     public static void addCurrentUserToLeaguePass(String leagueName, String password){
@@ -98,8 +98,8 @@ public class Application extends Controller {
                 }
             }
         }
-        boolean isOwner = Ownership.isLeagueOwner(user, league);
-        render("Leagues/view.html", league, isOwner);
+        Information.viewLeague(leagueName);
+
 
 
     }
@@ -116,23 +116,23 @@ public class Application extends Controller {
                 league.save();
             }
         }
-        boolean isOwner = Ownership.isLeagueOwner(user, league);
-        render("Leagues/view.html", league, isOwner);
+        Information.viewLeague(leagueName);
+
 
     }
 
     public static void manageLeagueString(String leagueName){
         User user = User.findByUsername(session.get("username"));
         League league = League.find("byName",leagueName).first();
-        boolean isOwner = Ownership.isLeagueOwner(user, league);
-        render("Leagues/view.html", league, isOwner);
+        Information.viewLeague(league.getName());
+
     }
 
     public static void manageLeague(User user, League league){
         user = User.findByUsername(session.get("username"));
         league = League.find("byName",league.getName()).first();
-        boolean isOwner = Ownership.isLeagueOwner(user, league);
-        render("Leagues/view.html", league, isOwner);
+        Information.viewLeague(league.getName());
+
     }
 
 
