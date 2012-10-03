@@ -7,7 +7,7 @@
     #{form @Information.processCreateUser()}
         <span class="error">#{error 'user.username' /}</span>
         <label for="username">Username</label>
-        <input type="text" id="username" name="user.username" value="${flash.user.username}"/>
+        <input type="text" id="username" name="user.username" value="${flash.username}"/>
 
         <span class="error">#{error 'user.password' /}</span>
         <label for="password">Password</label>
@@ -15,7 +15,7 @@
 
         <span class="error">#{error 'user.email' /}</span>
         <label for="email">Email (only to be used for password recovery)</label>
-        <input type="text" id="email" name="user.email" value="${flash.user.email}"/>
+        <input type="text" id="email" name="user.email" value="${flash.email}"/>
 
         <input type="submit" />
     #{/form}
